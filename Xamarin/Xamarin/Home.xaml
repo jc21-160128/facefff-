@@ -36,12 +36,15 @@
     <ContentPage Title="詳細">
         <StackLayout>
 
-            <DatePicker />
-            <Label Text="とりあえず詳細"
-                       FontSize="50" VerticalOptions="Center"/>
-            <Button Text="1day" HorizontalOptions="Center" />
-            <Button Text="1week" HorizontalOptions="Center" />
-            <Button Text="1month" HorizontalOptions="Center" />
+            <controls:Calendar x:Name="calendar_detail"
+                           Padding="10,50,10,0" 
+                           StartDay="Sunday" 
+                           SelectedBorderWidth="4" 
+                           DisabledBorderColor="Black" 
+                           TitleLabelFormat="yyyy年MM月"
+                           HorizontalOptions="Center"
+                           DateClicked="OnDateClick_detail"
+                           />
 
         </StackLayout>
     </ContentPage>

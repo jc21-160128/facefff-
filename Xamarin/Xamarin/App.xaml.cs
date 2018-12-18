@@ -12,8 +12,8 @@ namespace Xamarin
         {
             InitializeComponent();
 
-            //MainPage = new Home();
-            MainPage = new ResultPage();
+            MainPage = new Home();
+            //MainPage = new ResultPage();
         }
 
         protected override void OnStart()

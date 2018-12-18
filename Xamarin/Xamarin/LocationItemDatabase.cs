@@ -40,6 +40,11 @@ namespace Xamarin
             return database.QueryAsync<LocationItem>("SELECT * FROM [LocationItem] WHERE Day = " + Daykd);
         }
 
+        public Task<List<LocationItem>> GetItemNameAsync(String Name, DateTime dates)
+        {
+            return database.QueryAsync<LocationItem>("SELECT * FROM [LocationItem] WHERE Name = " + Name + "Day = " + dates);
+        }
+
 
         public Task<int> SaveItemAsync(LocationItem item)
         {

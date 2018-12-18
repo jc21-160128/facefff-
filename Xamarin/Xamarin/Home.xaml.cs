@@ -82,7 +82,8 @@ namespace Xamarin
             }
             else
             {*/
-                await this.Navigation.PushModalAsync(new insert(calendarrr.SelectedDates));
+            //await this.Navigation.PushModalAsync(new inserted(calendarrr.SelectedDates));
+            await this.Navigation.PushModalAsync(new insert(calendarrr.SelectedDates));
             /*}*/
         }
 
@@ -101,7 +102,10 @@ namespace Xamarin
         {
             await this.Navigation.PushModalAsync(new fixed_cost());
         }
-
+        private async void OnDateClick_detail(object sender, EventArgs e)
+        {
+            await this.Navigation.PushModalAsync(new inserted(calendar_detail.SelectedDates));
+        }
     }
 
 }

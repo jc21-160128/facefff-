@@ -11,16 +11,17 @@ using Xamarin.Forms.Xaml;
 namespace Xamarin
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class insert : CarouselPage
+	public partial class insert : TabbedPage
 	{
-        public String dd;
+        public DateTime dd;
 
         public insert (List<DateTime> dt)
 		{
 			InitializeComponent ();
 
             aaa.Text = dt[0].ToString("日付：yyyy年MM月dd日");
-            dd = dt[0].ToString("yyyy/MM/dd");
+            //dd = dt[0].ToString("yyyy/MM/dd");
+            this.dd = dt[0];
 
             //string1.Text = "金額：";
             b1.Clicked += b1Clicked;
@@ -39,19 +40,19 @@ namespace Xamarin
         {
             int kin = int.Parse(money.Text);
             //DateTime dt1 = DateTime.Parse(dd);
-            DateTime dt1 = DateTime.Parse(dd);
+            //DateTime dt1 = DateTime.Parse(dd);
             LocationItem item = new LocationItem()
             {
                 Name = koumoku.Text,
                 Spay = kin,
-                Day = dt1
+                Day = this.dd
             };
             Save(item);
         }
         public async void Save(LocationItem item1)
         {
             await App.Database.SaveItemAsync(item1);
-            await DisplayAlert("DATA", "登録しますか","OK");
+            await DisplayAlert("DATA", "登録しました","OK");
         }
 
         private void b1Clicked(object sender, EventArgs e)

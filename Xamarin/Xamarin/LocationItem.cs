@@ -13,6 +13,7 @@ namespace Xamarin
         public int Spay { get; set; }
         public int Num { get; set; }
         public DateTime Day { get; set; }
+
     }
 
     /*public class Mainincome
