@@ -8,29 +8,29 @@ using System.Threading.Tasks;
 
 namespace Xamarin
 {
-    public class LocationItemDatabase
+    public class incomeDatabase
     {
         readonly SQLiteAsyncConnection database;
 
-        public LocationItemDatabase(string dbPath)
+        public incomeDatabase(string dbPath)
         {
             database = new SQLiteAsyncConnection(dbPath);
-            database.CreateTableAsync<LocationItem>().Wait();
+            database.CreateTableAsync<income>().Wait();
         }
 
-        public Task<List<LocationItem>> GetItemsAsync()
+        public Task<List<income>> GetItemsAsync()
         {
-            return database.Table<LocationItem>().ToListAsync();
+            return database.Table<income>().ToListAsync();
         }
 
-        public Task<List<LocationItem>> GetItemsNotDoneAsync()
+        public Task<List<income>> GetItemsNotDoneAsync()
         {
-            return database.QueryAsync<LocationItem>("SELECT * FROM [LocationItem] WHERE [Done] = 0");
+            return database.QueryAsync<income>("SELECT * FROM [LocationItem] WHERE [Done] = 0");
         }
 
-        public Task<LocationItem> GetItemAsync(int id)
+        public Task<income> GetItemAsync(int id)
         {
-            return database.Table<LocationItem>().Where(i => i.ID == id).FirstOrDefaultAsync();
+            return database.Table<income>().Where(i => i.ID == id).FirstOrDefaultAsync();
         }
 
         /*public Task<List<LocationItem>> GetItemDay(System.Collections.Generic.List<System.DateTime> day)
@@ -46,7 +46,7 @@ namespace Xamarin
         }*/
 
 
-        public Task<int> SaveItemAsync(LocationItem item)
+        public Task<int> SaveItemAsync(income item)
         {
             if (item.ID != 0)
             {
@@ -58,7 +58,7 @@ namespace Xamarin
             }
         }
 
-        public Task<int> DeleteItemAsync(LocationItem item)
+        public Task<int> DeleteItemAsync(income item)
         {
             return database.DeleteAsync(item);
 

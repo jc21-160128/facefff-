@@ -8,29 +8,29 @@ using System.Threading.Tasks;
 
 namespace Xamarin
 {
-    public class LocationItemDatabase
+    public class goalmoney1Database
     {
         readonly SQLiteAsyncConnection database;
 
-        public LocationItemDatabase(string dbPath)
+        public goalmoney1Database(string dbPath)
         {
             database = new SQLiteAsyncConnection(dbPath);
-            database.CreateTableAsync<LocationItem>().Wait();
+            database.CreateTableAsync<goalmoney1>().Wait();
         }
 
-        public Task<List<LocationItem>> GetItemsAsync()
+        public Task<List<goalmoney1>> GetItemsAsync()
         {
-            return database.Table<LocationItem>().ToListAsync();
+            return database.Table<goalmoney1>().ToListAsync();
         }
 
-        public Task<List<LocationItem>> GetItemsNotDoneAsync()
+        public Task<List<goalmoney1>> GetItemsNotDoneAsync()
         {
-            return database.QueryAsync<LocationItem>("SELECT * FROM [LocationItem] WHERE [Done] = 0");
+            return database.QueryAsync<goalmoney1>("SELECT * FROM [goalmoney1Database] WHERE [Done] = 0");
         }
 
-        public Task<LocationItem> GetItemAsync(int id)
+        public Task<goalmoney1> GetItemAsync(int id)
         {
-            return database.Table<LocationItem>().Where(i => i.ID == id).FirstOrDefaultAsync();
+            return database.Table<goalmoney1>().Where(i => i.ID == id).FirstOrDefaultAsync();
         }
 
         /*public Task<List<LocationItem>> GetItemDay(System.Collections.Generic.List<System.DateTime> day)
@@ -46,7 +46,7 @@ namespace Xamarin
         }*/
 
 
-        public Task<int> SaveItemAsync(LocationItem item)
+        public Task<int> SaveItemAsync(goalmoney1 item)
         {
             if (item.ID != 0)
             {
@@ -58,7 +58,7 @@ namespace Xamarin
             }
         }
 
-        public Task<int> DeleteItemAsync(LocationItem item)
+        public Task<int> DeleteItemAsync(goalmoney1 item)
         {
             return database.DeleteAsync(item);
 

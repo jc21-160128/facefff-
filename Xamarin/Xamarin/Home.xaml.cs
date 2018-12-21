@@ -16,6 +16,7 @@ namespace Xamarin
         public Home()
         {
             InitializeComponent();
+            goal1();
 
             //カレンダー祝日の設定
             calendarrr.SpecialDates = new List<SpecialDate>{
@@ -28,6 +29,52 @@ namespace Xamarin
             SetHoliday(DateTime.Now.Year);
         }
 
+        public async void goal1()
+        {
+            double num1 = 0;
+            int num2 = 0;
+            int num5 = 0;
+            var mokuhyou = new goalmoney1()
+            {
+                goalmoney = 1000000
+            };
+
+            var income1 = new income()
+            {
+                incomemoney = 200000
+            };
+
+            int spend = 0;
+            base.OnAppearing();
+            var result1 = await App.Database.GetItemsAsync();
+            var result2 = await App.Database2.GetItemsAsync();
+            var result3 = await App.Database1.GetItemsAsync();
+            foreach (var loc1 in result1)
+            {
+                if(DateTime.Now.Year == loc1.Day.Year && DateTime.Now.Month == loc1.Day.Month)
+                num1 = loc1.Spay + num1;
+            }
+            /*foreach(var loc2 in result1)
+            {
+                if(DateTime.Now.Year == loc2.Day.Year && DateTime.Now.Month == loc2.Day.Month)
+                {
+                    spend = loc2.Spay + spend;
+                }
+            }*/
+            foreach(var loc2 in result3)
+            {
+                num5 = loc2.goalmoney;
+            }
+            num2 = income1.incomemoney;
+            double num3 = num2 - num1;
+            string s1 = ("今月使った金額は" + num1 + "円です");
+            string s3 = ("今月使える金額は" + num3 + "円です");
+            double num4 = (num3 / num5) * 100;
+            string s2 = ("目標金額の割合" + num4 + "%");
+            usedmoney.Text = s1;
+            ableuse.Text = s3;
+            goal.Text = s2;
+        }
         //カレンダー土日の設定
         private void SetWeekend(int year)
         {
@@ -101,6 +148,14 @@ namespace Xamarin
         private async void Button_Clicked_2(object sender, EventArgs e)
         {
             await this.Navigation.PushModalAsync(new fixed_cost());
+        }
+        private async void Button_Clicked_3(object seder, EventArgs e)
+        {
+            await this.Navigation.PushModalAsync(new goal_money());
+        }
+        private async void Button_Clicked_4(object seder, EventArgs e)
+        {
+            await this.Navigation.PushModalAsync(new salary());
         }
         private async void OnDateClick_detail(object sender, EventArgs e)
         {
