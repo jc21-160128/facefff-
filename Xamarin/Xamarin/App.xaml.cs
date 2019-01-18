@@ -34,6 +34,8 @@ namespace Xamarin
         static goalmoney1Database database1;
         static incomeDatabase database2;
         static salarymoneyDatabase database3;
+        static fixed_costDatabase database4;
+        static TemplateDatabase database5;
 
         public static LocationItemDatabase Database
         {
@@ -88,6 +90,34 @@ namespace Xamarin
                     database3 = new salarymoneyDatabase(s);
                 }
                 return database3;
+            }
+        }
+
+        public static fixed_costDatabase Database4
+        {
+            get
+            {
+                if (database4 == null)
+                {
+                    String ss = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
+                    String s = Path.Combine(ss, "LocationSQLite.db7");
+                    database4 = new fixed_costDatabase(s);
+                }
+                return database4;
+            }
+        }
+
+        public static TemplateDatabase Database5
+        {
+            get
+            {
+                if (database5 == null)
+                {
+                    String ss1 = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
+                    String s1 = Path.Combine(ss1, "TemplateSQLite.db1");
+                    database5 = new TemplateDatabase(s1);
+                }
+                return database5;
             }
         }
     }

@@ -22,10 +22,10 @@ namespace Xamarin
         {
             base.OnAppearing();
             var result = await App.Database1.GetItemsAsync();
-            foreach (var loc in result)
+            /*foreach (var loc in result)
             {
                 await App.Database1.DeleteItemAsync(loc);
-            }
+            }*/
             int num;
             num = int.Parse(kingaku.Text);
             var mokuhyou = new goalmoney1()

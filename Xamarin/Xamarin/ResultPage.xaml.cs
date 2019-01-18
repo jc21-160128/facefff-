@@ -20,7 +20,7 @@ namespace Xamarin
         protected override async void OnAppearing()
         {
             base.OnAppearing();
-            var result = await App.Database.GetItemsAsync();
+            var result = await App.Database4.GetItemsAsync();
 
 
             int size = result.Count;
@@ -32,18 +32,18 @@ namespace Xamarin
             {
                 //loc.Num = loc.Spay + loc.Longitude;
             }
-            await App.Database.DeleteItemAsync(result[1]);
+            //await App.Database1.DeleteItemAsync(result[1]);
             /*foreach(var locat in result){
-                await App.Database.DeleteItemAsync(locat);
+                await App.Database1.DeleteItemAsync(locat);
             }*/
-
+            
             foreach (var location in result)
             {
                 var layout3 = new StackLayout();
-                layout3.Children.Add(new Label() { Text = "name:" + location.ID });
-                layout3.Children.Add(new Label() { Text = "Spay:" + location.Spay });
-                layout3.Children.Add(new Label() { Text = "Name:" + location.Name });
-                layout3.Children.Add(new Label() { Text = "Day:" + location.Day });
+                layout3.Children.Add(new Label() { Text = "name:" + location.cate });
+                //layout3.Children.Add(new Label() { Text = "Spay:" + location.Spay });
+                //layout3.Children.Add(new Label() { Text = "Name:" + location.Name });
+                //layout3.Children.Add(new Label() { Text = "Day:" + location.Day });
                 //layout3.Children.Add(new Label() { Text = "Longitude:" + location.Longitude });
                 //layout3.Children.Add(new Label() { Text = "Num:" + location.Num });
                 //layout3.Children.Add(new Label() { Text = "Day:" + location.Day });
@@ -55,9 +55,9 @@ namespace Xamarin
 
         }
 
-        public async void Delete(LocationItem item1)
+        public async void Delete(goalmoney1 item1)
         {
-            await App.Database.DeleteItemAsync(item1);
+            await App.Database1.DeleteItemAsync(item1);
             await DisplayAlert("削除", "", "OK");
         }
 

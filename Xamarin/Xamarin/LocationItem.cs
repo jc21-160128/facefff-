@@ -39,4 +39,20 @@ namespace Xamarin
         public int Spay { get; set; }
         public int Num { get; set; }
     }
+
+    public class fixed_costmoney
+    {
+        [PrimaryKey, AutoIncrement]
+        public int ID { get; set; }
+        public string cate { get; set; }
+        public int Spay { get; set; }
+    }
+
+    public class Template
+    {
+        [PrimaryKey, AutoIncrement]
+        public int ID { get; set; }
+        public string Iname { get; set; }
+        public int Tmoney { get; set; }
+    }
 }

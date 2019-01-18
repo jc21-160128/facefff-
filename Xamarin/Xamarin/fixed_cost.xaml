@@ -8,9 +8,12 @@
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
             <DatePicker />
-            <Entry Placeholder="金額" />
-            <Picker Title="項目" />
-            <Button Text="登録" />
+            <Entry Placeholder="金額" 
+                   x:Name="kingaku"/>
+            <Picker Title="項目"
+                    x:Name="koumoku"/>
+            <Button Text="登録"
+                    x:Name="touroku"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -26,7 +26,7 @@ namespace Xamarin
                    BorderWidth =8, Selectable = true }
             };
 
-            SetHoliday(DateTime.Now.Year);
+            //SetHoliday(DateTime.Now.Year);
         }
 
         public async void goal1()
@@ -34,21 +34,22 @@ namespace Xamarin
             double num1 = 0;
             int num2 = 0;
             int num5 = 0;
-            var mokuhyou = new goalmoney1()
+            /*var mokuhyou = new goalmoney1()
             {
                 goalmoney = 1000000
-            };
+            };*/
 
-            var income1 = new income()
+            /*var income1 = new income()
             {
                 incomemoney = 200000
-            };
+            };*/
 
-            int spend = 0;
+            //int spend = 0;
             base.OnAppearing();
             var result1 = await App.Database.GetItemsAsync();
             var result2 = await App.Database2.GetItemsAsync();
             var result3 = await App.Database1.GetItemsAsync();
+            var result4 = await App.Database3.GetItemsAsync();
             foreach (var loc1 in result1)
             {
                 if(DateTime.Now.Year == loc1.Day.Year && DateTime.Now.Month == loc1.Day.Month)
@@ -65,11 +66,15 @@ namespace Xamarin
             {
                 num5 = loc2.goalmoney;
             }
-            num2 = income1.incomemoney;
+            foreach(var loc3 in result4){
+                num2 = loc3.Spay;
+            }
+            //num5 = result3[0].goalmoney;
+            //num2 = income1.incomemoney;
             double num3 = num2 - num1;
             string s1 = ("今月使った金額は" + num1 + "円です");
             string s3 = ("今月使える金額は" + num3 + "円です");
-            double num4 = (num3 / num5) * 100;
+            double num4 = ((double)num5 / num3)*100;
             string s2 = ("目標金額の割合" + num4 + "%");
             usedmoney.Text = s1;
             ableuse.Text = s3;
@@ -103,7 +108,7 @@ namespace Xamarin
 
         //カレンダー祝日の表示
 
-        private void SetHoliday(int year)
+        /*private void SetHoliday(int year)
         {
             IList<DateTime> result = new JapanPublicHoliday().PublicHolidays(year);
 
@@ -114,7 +119,7 @@ namespace Xamarin
                     TextColor = Color.Red
                 });
             }
-        }
+        }*/
 
 
         //カレンダー日付クリック
